@@ -76,6 +76,20 @@ data "aws_iam_policy_document" "codebuild_role_extra_policies" {
   }
 
   statement {
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
+      "ecr:CompleteLayerUpload",
+      "ecr:GetAuthorizationToken",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:InitiateLayerUpload",
+      "ecr:PutImage",
+      "ecr:UploadLayerPart"
+    ]
+    resources = ["*"]
+  }
+
+  statement {
     effect = "Allow"
     actions = [
       "ec2:CreateNetworkInterfacePermission"
